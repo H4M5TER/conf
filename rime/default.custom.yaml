@@ -1,0 +1,23 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.14.3_dev_0.8
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Wed Apr  5 01:44:49 2023"
+  rime_version: 1.8.5
+patch:
+  menu/page_size: 9
+  switcher/hotkeys: [ F7 ]
+  schema_list:
+  - schema: rime_ice
+  - schema: japanese
+  ascii_composer/switch_key:
+    Caps_Lock: commit_code
+    Shift_L: commit_code
+    Shift_R: commit_code
+    Control_L: noop
+    Control_R: noop 
+  punctuator/half_shape/+:
+    '[' : 「
+    ']' : 」
+    '{' : '{'
+    '}' : '}'
