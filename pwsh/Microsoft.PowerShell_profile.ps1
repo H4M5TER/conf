@@ -22,6 +22,7 @@ $env:_ZL_ADD_ONCE = 1
 $env:_ZL_ECHO = 1
 
 $env:KOMOREBI_CONFIG_HOME = 'D:/conf/komorebi'
+$env:STARSHIP_CONFIG = 'D:/conf/starship/starship.toml'
 
 Set-Alias -Name which -Value Get-Command
 Set-Alias -Name grep -Value findstr
