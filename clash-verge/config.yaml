@@ -6,23 +6,18 @@ mode: rule
 allow-lan: true
 ipv6: true
 external-controller: 127.0.0.1:9090
-secret: 'clash'
+secret: clash
 unified-delay: true
 tcp-concurrent: true
 global-client-fingerprint: edge
-
 geodata-mode: true
 geox-url:
   geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
   geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
   mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
-
 profile:
   store-selected: true
-  # 储存 API 对策略组的选择，以供下次启动时使用
   store-fake-ip: true
-  # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
-
 sniffer:
   enable: true
   sniff:
@@ -35,12 +30,7 @@ sniffer:
       - 80
       - 8080-8880
       override-destination: true
-
-hosts:
-  # lanraragi: 127.0.0.1
-  # nocodb: 127.0.0.1
-  # koishi: 127.0.0.1
-
+hosts: null
 dns:
   enable: true
   prefer-h3: true
@@ -48,72 +38,38 @@ dns:
   ipv6: true
   enhanced-mode: redir-host
   use-hosts: true
-  # default-nameserver:
-  # proxy-server-nameserver:
   nameserver:
-  - https://1.1.1.1/dns-query # cloudflare 1
-  - https://1.0.0.1/dns-query # cloudflare 2
-  - https://8.8.8.8/dns-query # google 1
-  - https://8.8.4.4/dns-query # google 2
-  # - https://101.101.101.101/dns-query # TWNIC 1
-  # - https://101.102.103.104/dns-query # TWNIC 2
-  # - https://45.11.45.11/dns-query # dns.sb 1
-  # - https://185.222.222.222/dns-query # dns.sb 2
-  # - https://doh.buzz:8000/dns-query
-  # - https://doh.beauty:8000/dns-query
+  - tls://1.1.1.1:853
+  - tls://1.0.0.1:853
+  - tls://8.8.8.8:853
+  - tls://8.8.4.4:853
   nameserver-policy:
-    # geosite:category-ads-all: rcode://success
     geosite:cn,private,apple-cn,google-cn,microsoft@cn,onedrive,category-games@cn:
-    - https://1.12.12.12/dns-query # dnspod tencent 1
-    - https://120.53.53.53/dns-query # dnspod tencent 2
-    - https://223.5.5.5/dns-query # ali 1
-    - https://223.6.6.6/dns-query # ali 2
-    # - system
-
+    - 1.12.12.12
+    - 120.53.53.53
+    - 223.5.5.5
+    - 223.6.6.6
+    - system
 tun:
-  enable: false
+  enable: true
   stack: system
   dns-hijack:
   - any:53
   auto-route: true
   auto-detect-interface: true
-
 rules:
-# - DOMAIN-SUFFIX, fanatical.com, DIRECT
-# - DOMAIN-SUFFIX, humblebundle.com, DIRECT
-# - DOMAIN-SUFFIX, forum.koishi.xyz, DIRECT
-# - DOMAIN-SUFFIX, aihuacheng.com, DIRECT
-
 - GEOSITE, private, DIRECT
 - GEOSITE, category-ads-all, 广告
 - GEOSITE, apple-cn, 国内
 - GEOSITE, google-cn, 国内
-- GEOSITE, microsoft@cn, 国内
+- GEOSITE, microsoft, 代理
 - GEOSITE, onedrive, 国内
 - GEOSITE, category-games@cn, 国内
-# - GEOSITE, bahamut, 动画疯
 - GEOSITE, bahamut, 台湾
-# - GEOSITE, biliintl, 哔哩东南亚
-# - GEOSITE, bilibili, 哔哩哔哩
-# - GEOSITE, ehentai, e-Hentai
-# - GEOSITE, github, Github
-# - GEOSITE, twitter, Twitter
-# - GEOSITE, youtube, YouTube
-# - GEOSITE, google, Google
-# - GEOSITE, telegram, Telegram
-# - GEOSITE, netflix, NETFLIX
-# - GEOSITE, spotify, Spotify
-# - GEOSITE, pixiv, Pixiv
 - GEOSITE, gfw, 代理
 - GEOSITE, cn, 国内
-
 - GEOIP, private, DIRECT, no-resolve
-# - GEOIP, google, Google
-# - GEOIP, netflix, NETFLIX
-# - GEOIP, telegram, Telegram
-# - GEOIP, twitter, Twitter
 - GEOIP, telegram, 代理
 - GEOIP, cn, 国内
-
 - DST-PORT, 80/8080/443/8443, 未匹配
 - MATCH, DIRECT
