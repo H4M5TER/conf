@@ -1,0 +1,10 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "komorebi.json"
+      ],
+      "url": "https://github.com/LGUG2Z/komorebi/blob/master/schema.json"
+    }
+  ]
+}
