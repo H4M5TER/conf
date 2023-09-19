@@ -1,0 +1,51 @@
+/* https://forum.vivaldi.net/topic/67410/centering-short-addressfield-url-css-mod
+
+*/
+
+/* .UrlFragment-Link {
+  font-size: 90%;
+} */
+
+/* centered addressfield URL */
+/* .UrlField:not(.UrlField--HasEditText) .UrlBar-UrlField {
+  text-align: center;
+}
+
+.UrlFragment-Wrapper {
+  width: fit-content;
+  left: 0;
+  right: 0;
+  margin: auto;
+} */
+
+.UrlBar-AddressField:focus-within .SiteInfoButton,
+.UrlBar-AddressField:focus-within .ContentBlocker-Control {
+  /*   display: none; */
+  visibility: hidden;
+}
+
+.UrlBar-UrlFieldWrapper {
+  margin-left: -40px;
+}
+
+/* hide https:// display */
+.UrlBar-AddressField>.SiteInfoButton:is(.secure, .certified)+.UrlBar-UrlFieldWrapper .UrlFragment-Wrapper>.UrlFragment--Lowlight:first-of-type {
+  opacity: 0;
+}
+
+/* domain stroke */
+.UrlFragment-HostFragment-Subdomain,
+.UrlFragment-HostFragment-Basedomain,
+.UrlFragment-HostFragment-TLD {
+  -webkit-text-stroke-width: 0.6px;
+}
+
+/* secure domain green highlighter  */
+.UrlBar-AddressField>.SiteInfoButton:is(.secure, .certified)+.UrlBar-UrlFieldWrapper :is(.UrlFragment-HostFragment-Basedomain, .UrlFragment-HostFragment-TLD) {
+  color: var(--colorSuccessBg);
+}
+
+/* warning domain pink highlighter */
+.UrlBar-AddressField>.SiteInfoButton.warning+.UrlBar-UrlFieldWrapper :is(.UrlFragment-HostFragment-Basedomain, .UrlFragment-HostFragment-TLD) {
+  color: deeppink;
+}

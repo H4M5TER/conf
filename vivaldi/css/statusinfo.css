@@ -1,0 +1,13 @@
+/* remove statusinfo css in vivaldi-vh.css first */
+
+#browser:not(:has(.toolbar-editor)) footer>.toolbar-statusbar .StatusInfo {
+  position: fixed;
+  left: 20%;
+  bottom: 2px;
+  min-height: 20px;
+  padding: 1px 3px;
+  background: var(--colorBgDark);
+  border-radius: var(--radiusHalf);
+  pointer-events: none;
+  z-index: 3;
+}
