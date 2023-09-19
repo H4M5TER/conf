@@ -10,6 +10,7 @@ patch:
   schema_list:
   - schema: rime_ice
   - schema: japanese
+  - schema: melt_eng
   ascii_composer/switch_key:
     Caps_Lock: commit_code
     Shift_L: commit_code

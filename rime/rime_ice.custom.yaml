@@ -1,17 +1,29 @@
 patch:
-  __include: grammar:/hans
+  grammar:
+    language: zh-hans-t-essay-bgw
+  translator/contextual_suggestions: true
+  translator/max_homophones: 7
+  translator/max_homographs: 7
+  melt_eng/dictionary: en_custom
   long_word_filter:
     count: 2
     idx: 4
+  engine/translators:
+  - punct_translator
+  - script_translator
+  - lua_translator@date_translator      # 时间、日期、星期
+  - table_translator@custom_phrase      # 自定义短语 custom_phrase.txt
+  # - table_translator@melt_eng           # 英文输入
+  - reverse_lookup_translator@liangfen  # 反查，两分拼字
+  - lua_translator@unicode              # Unicode
+  - lua_translator@number_translator    # 数字、金额大写
   engine/filters: # 因为不明原因，这里写 engine/filter/+ 并不是追加而是替换，下面同理
   - lua_filter@corrector                # 错音错字提示
   - simplifier@emoji                    # Emoji
   - simplifier@traditionalize           # 简繁切换
   - lua_filter@v_filter                 # v 模式 symbols 优先（否则是英文优先）
-  - lua_filter@autocap_filter           # 英文自动大写
-  - lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
+  # - lua_filter@autocap_filter           # 英文自动大写
+  # - lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
   - uniquifier                          # 去重
   - lua_filter@long_word_filter
   - lua_filter@is_in_user_dict
-  reduce_english_filter/words: # 增加了 mad sql wand
-  [ rug, bus, ship, laos, bail, bam, bans, bib, bos, chic, chit, dab, dag, dal, dit, dub, dug, fab, gam, ger, gus, hem, hep, hud, kat, lam, lax, lex, lug, lux, moc, mos, mot, mum, nad, nay, nib, nip, pak, pap, pax, rig, rum, sac, sal, sax, sec, shin, sis, ska, slang, sus, tad, taj, tac, tic, yep, yum, fax, cain, key, mob, buy, dam, wap, 'yes', but, put, lag, buf, lip, aid, aim, dig, dim, din, dip, pail, cad, chap, bend, lid, gem, tin, tum, mad, sql, wand ]
