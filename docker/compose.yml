@@ -1,0 +1,17 @@
+include:
+- src/db.yml
+- src/alist.yml
+- src/blivechat.yml
+- src/browserless.yml
+- src/calibre.yml
+# - src/epic-claimer.yml
+# - src/jellyfin.yml
+- src/lanraragi.yml
+- src/legado.yml
+- src/nocodb.yml
+- src/portainer.yml
+- src/rsshub.yml
+
+networks:
+  default:
+    name: net0

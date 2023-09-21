@@ -1,0 +1,15 @@
+services:
+  calibre-web:
+    image: johngong/calibre-web
+    container_name: calibre-web
+    restart: always
+    ports:
+    - 8083:8083
+    - 8084:8080
+    volumes:
+    - d:/docker-data/calibre-web/config:/config
+    - d:/docker-data/calibre-web/autoaddbooks:/autoaddbooks
+    - f:/calibre:/library:ro
+    environment:
+    - ENABLE_CALIBRE_SERVER_OPDS=true
+    - CALIBRE_ASCII_FILENAME=true

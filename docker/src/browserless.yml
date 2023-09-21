@@ -1,0 +1,9 @@
+version: '3.5'
+
+services:
+  browserless:
+    image: browserless/chrome
+    restart: always
+    ports:
+    - 13000:3000
+ 

@@ -1,0 +1,13 @@
+services:
+  blivechat:
+    image: xfgryujk/blivechat
+    container_name: blivechat
+    restart: always
+    ports:
+    - 12450:12450
+    volumes:
+    - blivechat-data:/mnt/data
+
+volumes:
+  blivechat-data:
+    name: blivechat-data
